@@ -14,6 +14,8 @@ pipeline{
         'BUILD_ONLY'
         ],
       description: 'Choose which stage to run'
+    )
+  }
   stages{
     stage('checkout'){
       when {
