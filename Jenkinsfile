@@ -10,9 +10,9 @@ pipeline{
         checkout scm
       }
     }
-    stage('deploy'){
+    stage('package'){
       steps{
-        sh 'mvn clean deploy'
+        sh 'mvn clean package'
       }
     }
   }
