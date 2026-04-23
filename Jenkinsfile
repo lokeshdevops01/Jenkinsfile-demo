@@ -7,12 +7,12 @@ pipeline{
   stages{
     stage('checkout'){
       steps{
-        checkout
+        checkout scm
       }
     }
-    stage('package'){
+    stage('deploy'){
       steps{
-        sh 'mvn clean package'
+        sh 'mvn clean deploy'
       }
     }
   }
