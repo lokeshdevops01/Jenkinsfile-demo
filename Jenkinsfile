@@ -1,3 +1,4 @@
+@Library ('my-shared-lib') _
 pipeline{
   agent any
   tools{
@@ -7,7 +8,7 @@ pipeline{
   stages{
     stage('checkout'){
       steps{
-        checkout scm
+        checkout
       }
     }
     stage('package'){
