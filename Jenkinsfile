@@ -1,3 +1,4 @@
+@Library('my-shared-lib') _
 pipeline{
   agent any
   tools{
@@ -12,7 +13,7 @@ pipeline{
     }
     stage('package'){
       steps{
-        sh 'mvn clean package'
+        mavenbuild()
       }
     }
   }
