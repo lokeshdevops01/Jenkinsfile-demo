@@ -7,7 +7,7 @@ pipeline{
   }
   parameters {
     choice(
-      name: 'STAGE_TO_RUN'
+      name: 'STAGE_TO_RUN',
       choices: [
         'ALL',
         'CHECKOUT_ONLY',
