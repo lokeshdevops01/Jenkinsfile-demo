@@ -30,7 +30,7 @@ pipeline{
     stage('package'){
       when {
         expression {
-          params.STAGE_TO_RUN in ['ALL', 'BUILS_ONLY']
+          params.STAGE_TO_RUN in ['ALL', 'BUILD_ONLY']
         }
       }
       steps{
