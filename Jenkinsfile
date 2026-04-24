@@ -20,12 +20,12 @@ pipeline{
         }
         stage ('unit test') {
           steps {
-            echo "running unit tests"
+            echo 'running unit tests'
           }
         }
         stage ('code scan') {
           steps {
-            echo "code scan by sonar cube'
+            echo 'code scan by sonar cube'
           }
         }
       }
