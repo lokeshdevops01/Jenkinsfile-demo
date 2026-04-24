@@ -11,9 +11,28 @@ pipeline{
         checkout scm
       }
     }
-    stage('package'){
-      steps{
-        mavenbuild()
+    stage ('parallel job') {
+      parallel {
+        stage('package'){
+          steps{
+              mavenbuild()
+          }
+        }
+        stage ('unit test') {
+          steps {
+            echo "running unit tests"
+          }
+        }
+        stage ('code scan') {
+          steps {
+            echo "code scan by sonar cube'
+          }
+        }
+      }
+    }
+    stage ('post-build') {
+      steps {
+        echo "build completed successfully"
       }
     }
   }
