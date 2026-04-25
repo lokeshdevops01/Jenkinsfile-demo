@@ -40,5 +40,10 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+    <repository>
+        <id>nexus-releases</id>
+        <url>http://13.220.137.154:8081/repository/jenkins-credential/</url>
+    </repository>
+</distributionManagement>
 </project>
-
