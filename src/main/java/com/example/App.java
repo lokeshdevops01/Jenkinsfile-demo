@@ -1,12 +1,7 @@
 package com.example;
-
-import java.util.logging.Logger;
-
 public class App {
-
-    private static final Logger logger = Logger.getLogger(App.class.getName());
-
     public static void main(String[] args) {
-        logger.info("Welcome to My Simple Java Application!");
+        System.out.println("Welcome to My Simple Java Application!");
+Replace this use of System.out or System.err by a logger.
     }
 }
