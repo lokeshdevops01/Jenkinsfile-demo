@@ -21,7 +21,7 @@ pipeline{
             }
           }
         }
-        stage ('sonarqube scan'){
+        stage ('SonarQube Scan'){
           steps {
             dir ('sonar-ws'){
               withSonarQubeEnv('sonarqube') {
