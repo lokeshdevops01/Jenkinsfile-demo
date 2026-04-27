@@ -30,7 +30,6 @@ pipeline{
               }
           }
         }
-    }
   }
     stage ('post build') {
       steps {
