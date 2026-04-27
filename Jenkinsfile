@@ -15,16 +15,20 @@ pipeline{
       parallel {
         stage ('Unit Test') {
           steps {
-            checkout scm
-            sh 'mvn clean test'
+              dir ('test-ws'){
+              checkout scm
+              sh 'mvn clean test'
+            }
           }
         }
         stage ('sonarqube scan'){
           steps {
-            withSonarQubeEnv('sonarqube') {
-              checkout scm
-              sh 'mvn clean sonar:sonar'
+            dir ('sonar-ws'){
+              withSonarQubeEnv('sonarqube') {
+                checkout scm
+                sh 'mvn sonar:sonar'
               }        
+            }
           }
         }
         stage('SonarQube Scan') { 
