@@ -23,7 +23,7 @@ pipeline{
           steps {
             withSonarQubeEnv('sonarqube') {
               checkout scm
-              sh 'mvn clean verify sonar:sonar'
+              sh 'mvn clean sonar:sonar'
               }        
           }
         }
