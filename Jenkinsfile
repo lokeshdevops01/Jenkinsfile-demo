@@ -25,7 +25,7 @@ pipeline{
                       usernameVariable: 'NEXUS_USER',
                       passwordVariable: 'NEXUS_PASS'
                   )]) {
-                      sh 'mvn deploy -s /var/lib/jenkins/.m2/settings.xml'
+                      sh 'mvn clean deploy -s /var/lib/jenkins/.m2/settings.xml'
                   }
               }
           }
