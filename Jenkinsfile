@@ -11,21 +11,32 @@ pipeline{
         checkout scm
       }
     }
-    stage('package'){
-      steps{
-        mavenbuild()
+    stage ('parallel jobs') {
+      parallel {
+        stage ('build') {
+          stage('package'){
+            steps{
+              mavenbuild()
+            }
+          }        
+          stage('Deploy to Nexus') {
+              steps {
+                  withCredentials([usernamePassword(
+                      credentialsId: 'nexus-creds',
+                      usernameVariable: 'NEXUS_USER',
+                      passwordVariable: 'NEXUS_PASS'
+                  )]) {
+                      sh 'mvn deploy -s /var/lib/jenkins/.m2/settings.xml'
+                  }
+              }
+          }
+        }
+    }
+  }
+    stage ('post build') {
+      steps {
+        echo ("Build Completed Successfully")
       }
     }
-    stage('Deploy to Nexus') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'nexus-creds',
-                    usernameVariable: 'NEXUS_USER',
-                    passwordVariable: 'NEXUS_PASS'
-                )]) {
-                    sh 'mvn deploy -s /var/lib/jenkins/.m2/settings.xml'
-                }
-            }
-        }
   }
 }
