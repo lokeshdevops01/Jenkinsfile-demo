@@ -18,7 +18,7 @@ pipeline{
                 withSonarQubeEnv('sonarqube') { 
                     sh ''' 
                     mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:3.10.0.2594:sonar 
-                    -Dsonar.projectKey=simple-java 
+                    -Dsonar.projectKey=simple-java \
                     -Dsonar.projectName=simple-java 
                     ''' 
                 } 
