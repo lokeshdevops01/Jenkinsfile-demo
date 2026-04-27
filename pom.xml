@@ -43,7 +43,7 @@
     <distributionManagement>
     <repository>
         <id>nexus-releases</id>
-        <url>http://54.158.9.176:8081/repository/DevOps-Assignment1/</url>
+        <url>http://34.230.88.34:8081/repository/DevOps-Assignment1//</url>
     </repository>
 </distributionManagement>
 </project>
