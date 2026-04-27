@@ -19,11 +19,11 @@ pipeline{
             sh 'mvn clean test'
           }
         }
-        stage ('sonarcube scan'){
+        stage ('sonarqube scan'){
           steps {
             withSonarQubeEnv('sonarqube') {
               checkout scm
-              sh 'mvn sonar:sonar'
+              sh 'mvn clean verify sonar:sonar'
               }        
           }
         }
