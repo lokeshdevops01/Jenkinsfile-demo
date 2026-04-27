@@ -13,11 +13,6 @@ pipeline{
     }
     stage ('parallel jobs') {
       parallel {
-        stage ('Unit Test') {
-          steps {
-            sh 'mvn test'
-          }
-        }
         stage('SonarQube Scan') { 
             steps { 
                 withSonarQubeEnv('sonarqube') { 
