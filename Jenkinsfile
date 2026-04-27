@@ -37,5 +37,4 @@ pipeline{
         echo ("Build Completed Successfully")
       }
     }
-  }
 }
