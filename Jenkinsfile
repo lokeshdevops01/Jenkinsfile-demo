@@ -11,19 +11,20 @@ pipeline{
         checkout scm
       }
     }
-    stage ('sonarcube scan'){
-      steps {
-        withSonarQubeEnv('sonarqube') {
-          sh 'mvn sonar:sonar'
-        }        
-      }
-    }
     stage ('parallel jobs') {
       parallel {
         stage ('Unit Test') {
           steps {
             checkout scm
             sh 'mvn clean test'
+          }
+        }
+        stage ('sonarcube scan'){
+          steps {
+            withSonarQubeEnv('sonarqube') {
+              checkout scm
+              sh 'mvn sonar:sonar'
+              }        
           }
         }
         stage('SonarQube Scan') { 
