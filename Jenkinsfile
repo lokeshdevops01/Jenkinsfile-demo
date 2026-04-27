@@ -19,18 +19,12 @@ pipeline{
             }
           }        
           stage('Deploy to Nexus') {
-              steps {
-                  withCredentials([usernamePassword(
-                      credentialsId: 'nexus-creds',
-                      usernameVariable: 'NEXUS_USER',
-                      passwordVariable: 'NEXUS_PASS'
-                  )]) {
-                      sh 'mvn clean deploy -s /var/lib/jenkins/.m2/settings.xml'
+              steps {                  
+                      sh 'mvn clean deploy'
                   }
               }
           }
         }
-    }
       stage ('post build') {
         steps {
           echo ("Build Completed Successfully")
