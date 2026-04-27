@@ -14,7 +14,6 @@ pipeline{
     stage ('parallel jobs') {
       parallel {
         stage ('build') {
-          stage('package'){
             steps{
               mavenbuild()
             }
