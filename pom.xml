@@ -43,7 +43,7 @@
     <distributionManagement>
     <repository>
         <id>nexus-releases</id>
-        <url>http://13.220.137.154:8081/repository/jenkins-credential/</url>
+        <url>http://54.158.9.176:8081/repository/jenkins-parallel/</url>
     </repository>
 </distributionManagement>
 </project>
