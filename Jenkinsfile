@@ -30,10 +30,11 @@ pipeline{
               }
           }
         }
-  }
-    stage ('post build') {
-      steps {
-        echo ("Build Completed Successfully")
-      }
     }
+      stage ('post build') {
+        steps {
+          echo ("Build Completed Successfully")
+        }
+      }
+  }
 }
