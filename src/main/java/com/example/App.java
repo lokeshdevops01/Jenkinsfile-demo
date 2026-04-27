@@ -1,7 +1,7 @@
 package com.example;
+
 public class App {
     public static void main(String[] args) {
         System.out.println("Welcome to My Simple Java Application!");
-Replace this use of System.out or System.err by a logger.
     }
 }
