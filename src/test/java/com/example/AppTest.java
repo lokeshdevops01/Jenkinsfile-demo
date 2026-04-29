@@ -6,6 +6,6 @@ public class AppTest {
 
     @Test
     public void testMain() {
-        App.main(new String[]{});   // 🔥 THIS is what gives coverage
+        App.main(new String[]{});
     }
 }
