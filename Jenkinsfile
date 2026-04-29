@@ -26,7 +26,7 @@ pipeline{
             dir ('sonar-ws'){
               withSonarQubeEnv('sonarqube') {
                 checkout scm
-                sh 'mvn sonar:sonar'
+                sh 'mvn verify sonar:sonar'
               }        
             }
           }
