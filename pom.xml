@@ -84,7 +84,7 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>http://54.152.58.76:8081/repository/simple-java-app/</url>
+            <url>http://32.198.89.78:8081/repository/simple-java-app/</url>
         </repository>
     </distributionManagement>
 
