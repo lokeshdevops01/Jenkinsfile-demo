@@ -20,17 +20,7 @@ pipeline{
               sh 'mvn clean test'
             }
           }
-        }
-        stage ('Sonarqube scan'){
-          steps {
-            dir ('sonar-ws'){
-              withSonarQubeEnv('sonarqube') {
-                checkout scm
-                sh 'mvn verify sonar:sonar'
-              }        
-            }
-          }
-        }         
+        }      
         stage ('build') {
             steps{
               mavenbuild()
@@ -38,11 +28,17 @@ pipeline{
           }        
           stage('Deploy to Nexus') {
               steps {                  
-                      sh 'mvn deploy'
+                      sshagent (['target-ssh-key']){
+                        ansiblePlaybook(
+                          playbook: '/var/lib/jenkins/workspace/deploy-jar.yml',
+                          inventory: '/var/lib/jenkins/workspace/inventory.ini',
+                          extras: '-e "ansible_ssh_private_key_file=/var/lib/jenkins/workspace/rolls.pem"'
+                          )
                   }
               }
           }
         }
+    }
       stage ('post build') {
         steps {
           echo ("Build Completed Successfully")
