@@ -25,15 +25,20 @@ pipeline{
             steps{
               mavenbuild()
             }
-          }        
-          stage('Deploy to EC2') {
-              steps {                  
-                      sshagent (['target-ssh-key']){
-                        ansiblePlaybook(
-                          playbook: '/var/lib/jenkins/workspace/deploy-jar.yml',
-                          inventory: '/var/lib/jenkins/workspace/inventory.ini',
-                          extras: '-e "ansible_ssh_private_key_file=/var/lib/jenkins/workspace/rolls.pem"'
-                          )
+          }
+        stage ('Deploy to nexus repo'){
+          steps {
+            sh 'mvn deploy'
+          }
+        }
+        stage('Deploy to EC2') {
+             steps {                  
+                     sshagent (['target-ssh-key']){
+                       ansiblePlaybook(
+                         playbook: '/var/lib/jenkins/workspace/deploy-jar.yml',
+                         inventory: '/var/lib/jenkins/workspace/inventory.ini',
+                         extras: '-e "ansible_ssh_private_key_file=/var/lib/jenkins/workspace/rolls.pem"'
+                         )
                   }
               }
           }
