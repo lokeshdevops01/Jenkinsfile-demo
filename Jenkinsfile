@@ -31,6 +31,8 @@ pipeline{
             sh 'mvn deploy'
           }
         }
+      }
+    }
         stage('Deploy to EC2') {
              steps {                  
                      sshagent (['target-ssh-key']){
@@ -41,9 +43,9 @@ pipeline{
                          )
                   }
               }
-          }
+          
         }
-    }
+    
       stage ('post build') {
         steps {
           echo ("Build Completed Successfully")
