@@ -26,7 +26,7 @@ pipeline{
               mavenbuild()
             }
           }        
-          stage('Deploy to Nexus') {
+          stage('Deploy to EC2') {
               steps {                  
                       sshagent (['target-ssh-key']){
                         ansiblePlaybook(
