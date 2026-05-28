@@ -84,7 +84,7 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>http://3.85.34.20:8081/repository/maven-releases/</url>
+            <url>http://54.91.87.205:8081/repository/maven-build-pckage/</url>
         </repository>
     </distributionManagement>
 
