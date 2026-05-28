@@ -1,0 +1,38 @@
+---
+- name: Deploy Docker Container
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure apt is updated
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install Docker dependencies
+      ansible.builtin.package:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+
+    - name: Pull Docker image
+      ansible.builtin.docker_image:
+        name: lokeshdevops01/simple-java-app
+        tag: "33"
+        source: pull
+
+    - name: Stop and remove existing container if running
+      ansible.builtin.docker_container:
+        name: simple-java-app
+        state: absent
+        force_kill: yes
+
+    - name: Run Docker container
+      ansible.builtin.docker_container:
+        name: simple-java-app
+        image: lokeshdevops01/simple-java-app:33
+        state: started
+        restart_policy: always
+        published_ports:
+          - "8080:8080"
